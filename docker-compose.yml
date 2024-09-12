@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres
+    environment:
+       - POSTGRES_USER=root
+       - POSTGRES_PASSWORD=root
+       - POSTGRES_ROOT_PASSWORD=root
+       - POSTGRES_DATABASE=app_database
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      - RAILS_ENV=development
+      - secret_key_base=A_RANDOM_STRING
+      - DATABASE_NAME=app_database
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
