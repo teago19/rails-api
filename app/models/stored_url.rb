@@ -1,0 +1,2 @@
+class StoredUrl < ApplicationRecord
+end

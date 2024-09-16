@@ -16,7 +16,7 @@ services:
       - secret_key_base=A_RANDOM_STRING
       - DATABASE_NAME=app_database
     volumes:
-      - .:/myapp
+      - .:/rails
     ports:
       - "3000:3000"
     depends_on:
