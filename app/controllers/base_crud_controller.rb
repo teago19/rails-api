@@ -1,5 +1,4 @@
 class BaseCrudController < ApplicationController
-  before_action :authenticate_token
   
   def index
     crud_instances = crud_model.all
