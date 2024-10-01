@@ -51,11 +51,4 @@ class BaseCrudController < ApplicationController
   def create_params
     nil
   end
-
-  def authenticate_token
-    auth_token = params['auth_token']
-    if auth_token != '12345678'
-      render json: {}, status: 401
-    end
-  end
 end
