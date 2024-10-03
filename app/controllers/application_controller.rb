@@ -1,3 +1,4 @@
 class ApplicationController < ActionController::API
-	acts_as_token_authentication_handler_for User
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  before_action :authenticate_user!, unless: :devise_controller?
 end

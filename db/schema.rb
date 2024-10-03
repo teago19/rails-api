@@ -10,17 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_01_005111) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_02_233552) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "acess_logs", force: :cascade do |t|
-    t.datetime "accessed_at", precision: nil
-    t.bigint "short_url_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["short_url_id"], name: "index_acess_logs_on_short_url_id"
-  end
 
   create_table "movies", force: :cascade do |t|
     t.string "name"
@@ -34,7 +26,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_01_005111) do
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "access_count", default: 0
   end
 
   create_table "stored_urls", force: :cascade do |t|
@@ -65,11 +56,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_01_005111) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.string "authentication_token", limit: 30
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
+    t.string "provider", default: "email", null: false
+    t.string "uid", default: "", null: false
+    t.boolean "allow_password_change", default: false
+    t.json "tokens"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "acess_logs", "short_urls"
 end

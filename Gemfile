@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 
 gem 'devise', '4.9'
 
-gem 'simple_token_authentication', '1.18'
+gem 'devise_token_auth', '1.2.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
