@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   resources :studios
   # # ROTAS ATORES
   resources :actors
+
+  resources :questions
+
+  resources :forms
+
+  post 'answer/:form_id', controller: :forms, action: :answer
 end
