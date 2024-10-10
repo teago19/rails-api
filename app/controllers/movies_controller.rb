@@ -1,4 +1,10 @@
 class MoviesController < BaseCrudController
+  
+  def like
+    movie = Movie.find_by(id: params[:id])
+    render json: {}, status: :ok
+  end 
+  
   def crud_model
     Movie
   end

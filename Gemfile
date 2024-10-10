@@ -39,6 +39,8 @@ gem 'devise', '4.9'
 
 gem 'devise_token_auth', '1.2.3'
 
+gem 'cpf_cnpj', '~> 0.5.0'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
